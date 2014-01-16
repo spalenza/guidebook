@@ -1,3 +1,16 @@
-<p>
-  {{greeting}}
-</p>
+<ul>
+  <li class='chatper' ng-repeat='chapter in chapters | orderBy:"title"'>
+    <h2 id='{{$id}}'>{{chapter.title}}</h2>
+    <p>{{chapter.summary}}</p>
+    <p>
+      <a href='#/chapter/{{chapter.id}}'>
+        {{chapter.notes.length}}
+        <ng-pluralize count='chapter.notes.length' when='{ "1": "note", "other": "notes" }' />
+      </a>
+      |
+      <a href='#/addNote/{{chapter.id}}'>add note</a>
+    </p>
+    <gb-note-list ng-show='chapter.id == selectedChapterId'></gb-note-list>
+  </li>
+</ul>
+
